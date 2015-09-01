@@ -74,13 +74,6 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 	vm.lightSensor = 1;
 	vm.lightThreshold = 400;
 
-	// MY COURSES
-	var config = {
-		params: {
-			'callback': "JSON_CALLBACK"
-		}
-	}
-
 	vm.buttonOn = function(){
 		$http.post('http://192.168.1.210/ajaxPost', {d7:1}).
 		then(function(response) {
@@ -121,19 +114,16 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 	var randomTempTimer = $interval(randomTemp, 5000);
 	var randomHumidityTimer = $interval(randomHumidity, 5000);
 
-	/*
-	tres modos enchufe:
-
-	ON -> Luz ON
-	OFF -> Luz OFF
-	AUTO -> Luz ON IF(Motion YES && Dark YES)
-	*/
-
 	var updateTime = function(){
 		
+		var config = {
+			params: {
+				'callback': "JSON_CALLBACK"
+			}
+		}
+		
 		$http.jsonp('http://192.168.1.210/json', config).success(function (data) {
-			vm.courses = data || {};
-			//console.log(data);
+
 			vm.lightSensor = data.a0-vm.lightThreshold;
 			vm.detected = (data.d2==1) ? 'Yes' : 'No';
 			vm.toggle = (data.d7==1) ? 'on' : 'off';

@@ -95,14 +95,11 @@ nav {
 	
 
 .lightSensor {
-	font-size: 1.4em;
+	font-size: 1.3em;
 	display: flex;
 	@extend .box;
 	@extend .boxPadding;
 }
-	.lightGauge {
-		width: 30%;
-	}
 
 
 .tempSensor {
@@ -114,34 +111,23 @@ nav {
 	padding-bottom: 10px;
 }
 
-	.tempGauges {
+	.gaugeContainer {
 		width: 30%;
+		position: relative;
 	}
-		.temperature {
-			width: 100%;
-			margin: 0 0 0 0;
-			position: relative;
-			text-align: center;
+		.gaugeCanvas {
+			width:100%;
+			height: 100%;
 		}
-		.humidity {
-			width: 100%;
-			margin: 10% 0 0 0; 
-			position: relative;
-			text-align: center;
+		.indicator {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-65%) translateX(-50%);
+			font-size: 0.65em;
+			color:#666;
+			pointer-events: none;
 		}
-			.gauge {
-				width:100%;
-				height: 100%;
-			}
-			.indicator {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translateY(-65%) translateX(-50%);
-				font-size: 0.65em;
-				color:#666;
-				pointer-events: none;
-			}
 
 	.graph {
 		width: 65%;

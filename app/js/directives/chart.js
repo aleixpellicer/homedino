@@ -112,16 +112,6 @@ function chart($window) {
             labels: ["27", "28", "29", "30", "31"],
             datasets: [
                 {
-                    label: "Max Temperature",
-                    fillColor: "rgba(212,42,74,0.1)",
-                    strokeColor: "rgba(212,42,74,1)",
-                    pointColor: "rgba(212,42,74,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [33, 32, 35, 31, 28]
-                },
-                {
                     label: "Average Temperature",
                     fillColor: "rgba(151,187,205,0.1)",
                     strokeColor: "rgba(151,187,205,1)",
@@ -129,17 +119,8 @@ function chart($window) {
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [21, 22, 21, 17, 23]
-                },
-                {
-                    label: "Min Temperature",
-                    fillColor: "rgba(154,212,42,0.1)",
-                    strokeColor: "rgba(154,212,42,1)",
-                    pointColor: "rgba(154,212,42,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [17, 15, 17, 13, 21]
+                    data: [21, 22, 21, 17, 23],
+                    multiTooltipTemplate: "<%= value %>ºC"
                 }
             ]
         };
@@ -148,26 +129,6 @@ function chart($window) {
         var dataHumidity = {
             labels: ["27", "28", "29", "30", "31"],
             datasets: [
-                {
-                    label: "Max Humidity",
-                    fillColor: "rgba(154,212,42,0.1)",
-                    strokeColor: "rgba(154,212,42,1)",
-                    pointColor: "rgba(154,212,42,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [77, 75, 67, 83, 81]
-                },
-                {
-                    label: "Min Humidity",
-                    fillColor: "rgba(212,42,74,0.1)",
-                    strokeColor: "rgba(212,42,74,1)",
-                    pointColor: "rgba(212,42,74,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [15, 22, 25, 21, 22]
-                },
                 {
                     label: "Average Humidity",
                     fillColor: "rgba(151,187,205,0.1)",
@@ -181,6 +142,23 @@ function chart($window) {
             ]
         };
         datas['humidity'] = dataHumidity;
+
+        var dataLight = {
+            labels: ["10", "11", "12", "13", "14"],
+            datasets: [
+                {
+                    label: "Light",
+                    fillColor: "rgba(151,187,205,0.1)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [255, 322, 455, 544, 455]
+                }
+            ]
+        };
+        datas['light'] = dataLight;
 
         var ctx = element[0].getContext("2d");
         var chart = new window.Chart(ctx).Line(datas[attrs.chartType], options);
