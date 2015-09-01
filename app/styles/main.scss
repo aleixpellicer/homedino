@@ -1,0 +1,247 @@
+@import 'reset';
+@import 'contentbox';
+@import 'vars';
+@import 'typography';
+@import 'trianglemixin';
+
+html {
+	height: 100%;
+	overflow-y: scroll;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: $font-color--dark;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+  background:#f5f8fa;
+}
+
+nav {
+	background:#fff;
+	border-top:#abadaf solid 1px;
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	height: 60px;
+
+	ul {
+		display: flex;
+
+		li {
+			width: 100%;
+			text-align: center;
+			font-size:.65em;
+			height: 100%;
+
+			a {
+				display: block;
+				width: 100%;
+				height:100%;
+				text-decoration: none;
+				color: #9b9b9b;
+				padding: 8px 10px;
+
+				.fa {
+					font-size:1.4em;
+					line-height:2em;
+				}
+			}
+
+			&.active {
+				a {
+					color:#000;
+				}
+			}
+		}
+	}
+}
+
+.box {
+	background:#fff;
+	border-bottom: #d7d7d7 solid 1px;
+}
+
+.boxPadding {
+	padding:20px;
+}
+
+	
+.topBar {
+	padding:20px;
+	display: flex;
+	@extend .box;
+}
+	.roomName,
+	.roomStatus {
+		width: 50%;
+	}
+
+	.roomStatus {
+		width: 50%;
+		text-align:right;
+	}
+
+	.green {
+		color:#00dc61;
+	}
+
+	.red {
+		color:#c45f44;
+	}
+	
+
+.lightSensor {
+	font-size: 1.4em;
+	display: flex;
+	@extend .box;
+	@extend .boxPadding;
+}
+	.lightGauge {
+		width: 30%;
+	}
+
+
+.tempSensor {
+	@extend .box;
+	@extend .boxPadding;
+	display: flex;
+	font-size:1.3em;
+	height: 100%;
+	padding-bottom: 10px;
+}
+
+	.tempGauges {
+		width: 30%;
+	}
+		.temperature {
+			width: 100%;
+			margin: 0 0 0 0;
+			position: relative;
+			text-align: center;
+		}
+		.humidity {
+			width: 100%;
+			margin: 10% 0 0 0; 
+			position: relative;
+			text-align: center;
+		}
+			.gauge {
+				width:100%;
+				height: 100%;
+			}
+			.indicator {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateY(-65%) translateX(-50%);
+				font-size: 0.65em;
+				color:#666;
+				pointer-events: none;
+			}
+
+	.graph {
+		width: 65%;
+		margin:0 0 0 5%;
+		display: block;
+		margin-bottom:3%;
+	}
+		.chart {
+			width: 100%;
+		}
+
+.test {
+	width: 50%;
+	padding: 20px;
+	text-align: center;
+}
+
+$toggleheight: 1.2em;
+$togglewidth: 2em;
+$togglebg: rgb(255,255,255);
+$togglebordersize: .07em;
+$togglebordercolor: rgb(230,230,230);
+$toggleinputwidth: $togglewidth * 1.5;
+
+$switchbg: rgb(255,255,255);
+$switchsize: $toggleheight;
+$switchbordersize: .05em;
+$switchbordercolor: darken($switchbg, 15%);
+
+$activecolor: rgb(0,220,97);
+$activebordercolor: $activecolor;
+
+$labeloffset: $toggleheight / 3.63636364;
+$borderradius: 2em;
+
+.toggle-bg {
+  background: $togglebg;
+  border-radius: $borderradius;
+  border: $togglebordersize solid $togglebordercolor;    
+  display: block; /* ...So that we can set a height and width */
+  float: left; /* ...So that it doesn't take up the full width of the page */
+  height: $toggleheight; /* You can change this later if you want */
+  position: relative; /* Required to allow the switch to move around */
+  width: $togglewidth; /* This can be changed later as well */
+  transition: all .2s;
+  position: relative;
+  &:hover {
+    border-color: darken($togglebordercolor,5%);
+  }
+  &.on {
+    background: $activecolor;
+    border-color: $activebordercolor;
+  }
+  input {
+    margin: 0;
+    padding: 0;
+    width: $toggleinputwidth;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 2; /* We want the input to be over the span.switch, which we'll give a z-index of 1 */
+    /*IE*/
+    zoom: 1;
+    filter: alpha(opacity=0);
+    /* initial toggle position */
+    &:checked~.toggle{
+      left: -3px;
+    }
+    /* final relative toggle position */
+    &~:checked~.toggle{
+      left: ($togglewidth - $switchsize - $togglebordersize);
+    }
+    &:checked{
+      z-index: 0;
+    }
+  }
+}
+
+// Main circular switch
+
+.toggle {
+  background: $switchbg;
+  border-radius: $borderradius;  
+  border: $switchbordersize solid $switchbordercolor;      
+  display: block;
+  float: left;
+  height: ($switchsize + 0.05em);
+  width: ($switchsize + 0.1em);
+  left: -0.1em;
+  top:-2px;
+  position: relative;
+  transition: all .2s;
+  z-index: 1; /* Remember, it must be below the invisible inputs */
+  &.on {
+    box-shadow: 2px 2px 12px 1px rgba(0,0,0,0.10);
+  }
+  &.off {
+    box-shadow: 2px 2px 12px 1px rgba(0,0,0,0.10);
+  }
+}

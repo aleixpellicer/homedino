@@ -1,0 +1,43 @@
+<main>
+	<article class="topBar">
+		<div class="roomName">{{ room.roomName }}</div>
+		<div ng-show="room.active" class="roomStatus green"><i class="fa fa-power-off"></i> Connected</div>
+		<div ng-show="!room.active" class="roomStatus red"><i class="fa fa-power-off"></i> Not connected</div>
+	</article>
+	<article class="tempSensor">
+		<div class="tempGauges">
+			<div class="temperature">
+				<canvas class="gauge" ng-click="room.viewing = 'temperature'" gauge gauge-maxvalue="40" percent-colors='[[0.0, "#10c6ee" ],[0.17, "#10c6ee"],[0.34, "#469cbf"],[0.51, "#75768b"], [0.68, "#8b5e72"], [0.85, "#ad4351"], [1.0, "#bd3742"]]' gauge-value="{{ room.temperature }}"></canvas>
+				<h2 class="indicator">{{ room.temperature }}ºC</h2>
+			</div>
+			<div class="humidity">
+				<canvas class="gauge" ng-click="room.viewing = 'humidity'" gauge gauge-maxvalue="100" percent-colors='[[0.0, "#bd3742" ], [0.17, "#bd3742"], [0.34, "#ad4351"], [0.51, "#8b5e72"], [0.68, "#75768b"], [0.85, "#469cbf"], [1.0, "#10c6ee"]]' gauge-value="{{ room.humidity }}"></canvas>
+				<h2 class="indicator">{{ room.humidity }}%</i></h2>
+			</div>
+		</div>
+		<div class="graph">
+			<canvas chart chart-type="temperature" height="100%" class="chart" ng-show="room.viewing == 'temperature'"></canvas>
+			<canvas chart chart-type="humidity" height="100%" class="chart ng-hide" ng-show="room.viewing == 'humidity'"></canvas>
+		</div>
+	</article>
+	<article class="lightSensor">
+	<div class="lightGauge">
+			<canvas class="gauge"  gauge-value="{{ room.lightSensor }}" gauge gauge-maxvalue="600" percent-colors='[[0.0, "#10c6ee" ],[0.17, "#10c6ee"],[0.34, "#469cbf"],[0.51, "#75768b"], [0.68, "#8b5e72"], [0.85, "#ad4351"], [1.0, "#bd3742"]]'></canvas>
+			<h2 class="indicator">{{ room.lightSensor }}ºC</h2>
+		</div>
+	</article>
+	<article class="somethingelse">
+		<div class="status {{ room.toggle }}"><i class="fa fa-lightbulb-o"></i> {{ room.toggle }}</div>
+		<div class="motion"><i class="fa fa-eye"></i> {{ room.detected }}</div>
+		<div class="lightness"><i class="fa fa-circle"></i> {{ room.lightness }}</div>
+		<div class="switch">
+			<form>
+			    <div class="toggle-bg {{ room.toggle }}">
+			      <input type="radio" name="toggle" value="off" ng-model="room.toggle" ng-click="room.buttonOff();">
+			      <input type="radio" name="toggle" value="on" ng-model="room.toggle" ng-click="room.buttonOn();">
+			      <span class="toggle {{ room.toggle }}"></span>
+			    </div>
+			</form>
+		</div>
+	</article>
+</main>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+      <!-- apparently only for html5 routing...
+      <base href="/">
+      -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title ng-bind="pageTitle"></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+      <div ui-view></div>
+      <nav>
+        <ul>
+          <li ui-sref-active="active"><a ui-sref="Home"><i class="fa fa-home"></i><br>Home</a></li>
+          <li ui-sref-active="active"><a ui-sref="Room({roomId: 1, roomName: 'Kitchen' })"><i class="fa fa-birthday-cake"></i><br>Kitchen</a></li>
+          <li ui-sref-active="active"><a ui-sref="Room({roomId: 2, roomName: 'Main Hall' })"><i class="fa fa-group"></i><br>Hall</a></li>
+          <!--<li><a ui-sref="Room({roomId: 3, roomName: 'Kitchen' })"><i class="fa fa-laptop"></i><br>Office</a></li>
+          <li ui-sref-active="active"><a ui-sref="Room({roomId: 4, roomName: 'Kitchen' })"><i class="fa fa-bed"></i><br>Aleix</a></li>
+          <li ui-sref-active="active"><a ui-sref="Room({roomId: 5, roomName: 'Kitchen' })"><i class="fa fa-bed"></i><br>Carmen</a></li>
+          -->
+          <li ui-sref-active="active"><a ui-sref="Room({roomId: 6, roomName: 'Bathroom' })"><i class="fa fa-female"></i><br>Bath</a></li>
+          <li ui-sref-active="active"><a ui-sref="Room({roomId: 7, roomName: 'Storage Room' })"><i class="fa fa-cube"></i><br>Storage</a></li>
+        </ul>
+      </nav>
+      <script src="js/main.js"></script>
+  </body>
+</html>

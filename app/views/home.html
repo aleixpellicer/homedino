@@ -1,0 +1,6 @@
+<div class="test">
+	<div class="lightsensor">
+		<canvas class="gauge" gauge gauge-maxvalue="{{ 1100-home.lightThreshold }}" percent-colors='[[0.0, "#bd3742" ], [0.17, "#bd3742"], [0.34, "#ad4351"], [0.51, "#8b5e72"], [0.68, "#75768b"], [0.85, "#469cbf"], [1.0, "#10c6ee"]]' gauge-value="{{ home.lightSensor }}"></canvas>
+	</div>
+	<h1>{{ home.lightSensor }}</h1>
+</div>
