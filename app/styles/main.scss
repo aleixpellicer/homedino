@@ -95,14 +95,22 @@ nav {
 	
 
 .lightSensor {
-	font-size: 1.3em;
+	font-size: 1.6em;
 	display: flex;
 	@extend .box;
 	@extend .boxPadding;
 }
 
-
 .tempSensor {
+	@extend .box;
+	@extend .boxPadding;
+	display: flex;
+	font-size:1.6em;
+	height: 100%;
+	padding-bottom: 10px;
+}
+
+.motionSensor {
 	@extend .box;
 	@extend .boxPadding;
 	display: flex;
@@ -121,10 +129,10 @@ nav {
 		}
 		.indicator {
 			position: absolute;
-			top: 50%;
+			top: 34%;
 			left: 50%;
-			transform: translateY(-65%) translateX(-50%);
-			font-size: 0.65em;
+			transform: translateX(-50%);
+			font-size: 0.8em;
 			color:#666;
 			pointer-events: none;
 		}
@@ -138,6 +146,16 @@ nav {
 		.chart {
 			width: 100%;
 		}
+
+.icon {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translateX(-53%);
+	width: 30px;
+}
+
+
 
 .test {
 	width: 50%;

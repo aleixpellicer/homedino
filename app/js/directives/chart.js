@@ -63,7 +63,7 @@ function chart($window) {
             // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
             maintainAspectRatio: false,
             // Boolean - Determines whether to draw tooltips on the canvas or not
-            showTooltips: true,
+            showTooltips: false,
             // Function - Determines whether to execute the customTooltips function instead of drawing the built in tooltips (See [Advanced - External Tooltips](#advanced-usage-custom-tooltips))
             customTooltips: false,
             // Array - Array of string names to attach tooltip events

@@ -7,6 +7,7 @@
 	<article class="tempSensor">
 		<div class="gaugeContainer">
 			<canvas class="gaugeCanvas" gauge gauge-value="{{ room.temperature }}" gauge-maxvalue="40" percent-colors='[[0.0, "#10c6ee"],[0.17, "#10c6ee"],[0.34, "#469cbf"],[0.51, "#75768b"], [0.68, "#8b5e72"], [0.85, "#ad4351"], [1.0, "#bd3742"]]'></canvas>
+			<i><img class="icon" src="./images/icons/thermometer.svg"></i>
 			<h2 class="indicator">{{ room.temperature }}ºC</h2>
 		</div>
 		<div class="graph">
@@ -16,6 +17,7 @@
 	<article class="tempSensor">
 		<div class="gaugeContainer">
 			<canvas class="gaugeCanvas" gauge gauge-value="{{ room.humidity }}" gauge-maxvalue="100" percent-colors='[[0.0, "#bd3742"], [0.17, "#bd3742"], [0.34, "#ad4351"], [0.51, "#8b5e72"], [0.68, "#75768b"], [0.85, "#469cbf"], [1.0, "#10c6ee"]]'></canvas>
+			<i><img class="icon" src="./images/icons/humidity.svg"></i>
 			<h2 class="indicator">{{ room.humidity }}%</i></h2>
 		</div>
 		<div class="graph">
@@ -25,13 +27,22 @@
 	<article class="lightSensor">
 		<div class="gaugeContainer">
 			<canvas class="gaugeCanvas" gauge gauge-value="{{ room.lightSensor }}" gauge-maxvalue="600" percent-colors='[[0.0, "#10c6ee"],[0.17, "#10c6ee"],[0.34, "#469cbf"],[0.51, "#75768b"], [0.68, "#8b5e72"], [0.85, "#ad4351"], [1.0, "#bd3742"]]'></canvas>
-			<h2 class="indicator">{{ room.lightSensor }} lx</h2>
+			<i><img class="icon" src="./images/icons/light.svg"></i>
+			<h2 class="indicator">{{ room.lightPercent }}%</h2>
 		</div>
 		<div class="graph">
 			<canvas chart chart-type="light" height="100%" class="chart"></canvas>
 		</div>
 	</article>
-	<article class="somethingelse">
+	<article class="motionSensor">
+		<div class="gaugeContainer">
+			test
+		</div>
+		<div class="graph">
+			test
+		</div>
+	</article>
+	<!--<article class="somethingelse">
 		<div class="status {{ room.toggle }}"><i class="fa fa-lightbulb-o"></i> {{ room.toggle }}</div>
 		<div class="motion"><i class="fa fa-eye"></i> {{ room.detected }}</div>
 		<div class="lightness"><i class="fa fa-circle"></i> {{ room.lightness }}</div>
@@ -44,5 +55,5 @@
 			    </div>
 			</form>
 		</div>
-	</article>
+	</article>-->
 </main>

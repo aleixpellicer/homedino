@@ -69,10 +69,13 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 	vm.roomName = $stateParams['roomName'];
 	vm.active = true;
 	vm.toggle = 'off';
-	
+	vm.active = false;
+
 	vm.viewing = 'temperature';
 	vm.lightSensor = 1;
 	vm.lightThreshold = 400;
+	vm.temperature = 0;
+	vm.humidity = 0;
 
 	vm.buttonOn = function(){
 		$http.post('http://192.168.1.210/ajaxPost', {d7:1}).
@@ -91,7 +94,7 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 
 		});
 	}
-
+	/*
 	var temp = 0;
 	var randomTemp = function(){
 		temp = temp + 1;
@@ -113,6 +116,7 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 	randomHumidity();
 	var randomTempTimer = $interval(randomTemp, 5000);
 	var randomHumidityTimer = $interval(randomHumidity, 5000);
+	*/
 
 	var updateTime = function(){
 		
@@ -121,12 +125,16 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 				'callback': "JSON_CALLBACK"
 			}
 		}
-		
+
 		$http.jsonp('http://192.168.1.210/json', config).success(function (data) {
 
 			vm.lightSensor = data.a0-vm.lightThreshold;
+			vm.lightPercent = parseFloat((vm.lightSensor/600)*100).toFixed(0);
 			vm.detected = (data.d2==1) ? 'Yes' : 'No';
 			vm.toggle = (data.d7==1) ? 'on' : 'off';
+			vm.active = true;
+			vm.temperature = Math.round(data.tmp);
+			vm.humidity = Math.round(data.hdy);
 
 			if(vm.lightSensor < 600){
 				vm.lightness = 'Dark';
@@ -139,6 +147,7 @@ function RoomCtrl($scope, $http, $interval, $stateParams, $state) {
 			vm.courses = {};
 			console.log('error json');
 			vm.jsonerror = true;
+			vm.active = false;
 		});
 	}
 
